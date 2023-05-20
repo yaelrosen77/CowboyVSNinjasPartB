@@ -6,15 +6,15 @@ using namespace std;
 namespace ariel{
 
     class Cowboy : public Character{
-        int Bullets_;
-        bool hasBullets();
-        void reload();       
+        int Bullets_;     
 
         public:
             int getNumOfBullets();
             string print() override;
             Cowboy(string name, Point location);
             void shoot(Character* enemy);
+            bool hasboolets();
+            void reload();  
     };
 
 }

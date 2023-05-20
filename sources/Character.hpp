@@ -10,8 +10,7 @@ namespace ariel{
             Point location_;
             int hitPoints_;
             string name_;
-            void hit(int hits);
-            double distance(const Character& other) const;
+
 
         public:
            Character(string name, Point location);
@@ -20,6 +19,11 @@ namespace ariel{
            virtual string print() = 0;
            bool isAlive() const;
            virtual ~Character(){};
+           void hit(int hits);
+           double distance(const Character* other) const;
+
+
+           
     };
 
 }

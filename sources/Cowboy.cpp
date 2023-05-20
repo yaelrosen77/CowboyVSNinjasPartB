@@ -6,7 +6,7 @@ Cowboy :: Cowboy(string name, Point location):Character(name, location){
     hitPoints_ = 110;
 }
 
-bool Cowboy :: Cowboy :: hasBullets(){
+bool Cowboy :: Cowboy :: hasboolets(){
     return 1;
 }
 

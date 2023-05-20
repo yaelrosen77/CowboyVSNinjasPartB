@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cmath>
 using namespace std; 
 namespace ariel{
 
@@ -13,7 +14,8 @@ namespace ariel{
             void print() const;
             double getX() const;
             double getY() const;
-            friend Point moveTowards(Point& source, Point& dest, double dist);
+            static bool inDomain(Point& subj, Point& edge1, Point& edge2);
+            static Point moveTowards(Point& source, Point& dest, double dist);
 };
 
 }

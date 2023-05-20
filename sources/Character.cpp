@@ -8,7 +8,7 @@ void Character :: hit(int hits){
     return;
 }
 
-double Character :: distance(const Character& other) const{
+double Character :: distance(const Character* other) const{
     return 1;
 }
 
