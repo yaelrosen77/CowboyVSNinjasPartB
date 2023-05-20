@@ -17,7 +17,7 @@ void Point :: print() const{
 
 Point Point :: moveTowards(Point& source, Point& dest, double dist){
     double dist2 = source.distance(dest);
-    if (dist2>=dist){
+    if (dist2<=dist){
         return dest;
     }
     if (source.getX() == dest.getX()){
