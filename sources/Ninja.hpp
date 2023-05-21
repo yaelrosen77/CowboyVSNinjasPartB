@@ -9,7 +9,7 @@ namespace ariel{
     class Ninja : public Character{
         public: 
             Ninja(string name, Point location);
-            void print() override;
+            string print() override;
             void attack(Character* enemy) override;
             void move(Character* enemy);
             void slash(Character* enemy);

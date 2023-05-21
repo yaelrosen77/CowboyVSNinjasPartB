@@ -11,33 +11,32 @@ bool Cowboy :: Cowboy :: hasboolets(){
 }
 
 void Cowboy :: reload(){
-    Bullets_ += 6;
+    if (isAlive() == false)
+        throw runtime_error("dead character mal-function");
+    Bullets_ = 6;
 }
 
 void Cowboy ::shoot(Character* enemy){
+    if (isAlive() == false || enemy->isAlive() == false)
+        throw runtime_error("dead character mal-function");
+    if (enemy == this)
+        throw runtime_error("no self harm");
     if (isAlive() && Bullets_ > 0){
         enemy->hit(10);
         Bullets_--;
     }
 }
 
-void Cowboy :: print(){
+string Cowboy :: print(){
     string str;
-    string tmp;
-    ostringstream local;            
-    auto cout_buff = cout.rdbuf();
-    cout.rdbuf(local.rdbuf());
-    location_.print();
-    cout.rdbuf(cout_buff);
-
     if (this->isAlive()){
-        str = "C Fighter name is " + name_ + ". Num of hits are " + 
-                    to_string(hitPoints_) + ". Located in " + local.str();
+        str = "C Fighter name is " + name_ + ". Num of hitpoints are " + 
+                    to_string(hitPoints_) + ". Located in " + location_.print();
     }
     else {
-        string str = "C Fighter name was (" + name_ + ") . Last seen in " + local.str();
+        str = "C Fighter name was (" + name_ + ") . Last seen in " + location_.print();
     }
-    cout << str;
+    return str;
 }
 
 int Cowboy :: getNumOfBullets(){

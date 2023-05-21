@@ -10,8 +10,9 @@ namespace ariel{
 
         public:
             Point(double x1, double y1);
+            Point(Point& other);
             double distance(const Point& other) const;
-            void print() const;
+            string print() const;
             double getX() const;
             double getY() const;
             bool operator==(const Point& other) const;

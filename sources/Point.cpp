@@ -5,7 +5,10 @@ Point :: Point(double x1, double y1){
     x_ = x1;
     y_ = y1;
 }
-
+Point::Point(Point& other){
+    x_=other.getX();
+    y_=other.getY();
+}
 bool Point :: operator==(const Point& other) const{
     if (x_ == other.getX() && y_ == other.getY())
         return true;
@@ -17,11 +20,14 @@ double Point :: distance(const Point& other) const{
     return sqrt(res);
 }
 
-void Point :: print() const{
-    cout << "(" << x_ << "," << y_ << ")" << endl;
+string Point :: print() const{
+    string str = "(" + to_string(x_) + "," + to_string(y_) + ")";
+    return str;
 }
 
 Point Point :: moveTowards(Point& source, Point& dest, double dist){
+    if (dist<=0)
+        throw invalid_argument("cannot move with negative distance");
     double dist2 = source.distance(dest);
     if (dist2<=dist){
         return dest;

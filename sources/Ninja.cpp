@@ -8,28 +8,23 @@ void Ninja:: move(Character* enemy){
 }
 
 void Ninja:: slash(Character* enemy){
-    if (isAlive() && distance(enemy) < 1){
+    if (isAlive() == false || enemy->isAlive()==false)
+        throw runtime_error("dead character mal-function");
+    if (enemy == this)
+        throw runtime_error("no self harm");
+    if (distance(enemy) < 1){
         enemy->hit(40);
     }
 }
 
-void Ninja::print(){
+string Ninja::print(){
     string str;
-    string tmp;
-    ostringstream local;            
-    auto cout_buff = cout.rdbuf();
-    cout.rdbuf(local.rdbuf());
-    location_.print();
-    cout.rdbuf(cout_buff);
-
     if (this->isAlive()){
-        str = "N Fighter name is " + name_ + ". Num of hits are " + 
-                    to_string(hitPoints_) + ". Located in " + local.str();
+        str = "N Fighter name is " + name_ + ". Num of hitpoints are " + 
+                    to_string(hitPoints_) + ". Located in " + location_.print();
     }
-    else {
-        string str = "N Fighter name was (" + name_ + ") . Last seen in " + local.str();
-    }
-    cout << str;    
+    else str = "N Fighter name was (" + name_ + ") . Last seen in " + location_.print();
+    return str;    
 }
 
 Ninja :: Ninja(string name, Point location):
