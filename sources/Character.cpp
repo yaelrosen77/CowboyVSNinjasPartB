@@ -5,11 +5,11 @@ Character :: Character(string name, Point location):
     location_(location),name_(name){}
 
 void Character :: hit(int hits){
-    return;
+    hitPoints_ -= hits;
 }
 
 double Character :: distance(const Character* other) const{
-    return 1;
+    return location_.distance(other->getLocation());
 }
 
 string Character :: getName() const{
@@ -21,5 +21,8 @@ Point Character :: getLocation() const{
 }
 
 bool Character :: isAlive() const{
-    return true;
+    if (hitPoints_>0){
+        return true;
+    }
+    return false;
 } 

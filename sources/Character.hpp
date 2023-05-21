@@ -17,13 +17,12 @@ namespace ariel{
            string getName() const;
            Point getLocation() const;
            virtual string print() = 0;
+           virtual void attack(Character* other) = 0;
            bool isAlive() const;
            virtual ~Character(){};
            void hit(int hits);
            double distance(const Character* other) const;
-
-
-           
+           void SetLocation(Point& dest){location_=dest;}
     };
 
 }

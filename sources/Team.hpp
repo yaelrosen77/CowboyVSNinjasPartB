@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <float.h>
 #include <vector>
 using namespace std;
 
@@ -21,6 +22,8 @@ namespace ariel{
             void attack(Team* enemies);
             int stillAlive();
             void print() const;
+            void Setleader();
+            Character* findT(Team* enemies);
             virtual ~Team();
     };
 }

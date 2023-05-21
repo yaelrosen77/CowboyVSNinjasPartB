@@ -56,3 +56,4 @@ double Point:: getX() const{
 double Point:: getY() const{
     return y_;
 }
+
