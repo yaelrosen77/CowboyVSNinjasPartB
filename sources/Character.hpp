@@ -16,7 +16,7 @@ namespace ariel{
            Character(string name, Point location);
            string getName() const;
            Point getLocation() const;
-           virtual string print() = 0;
+           virtual void print() = 0;
            virtual void attack(Character* other) = 0;
            bool isAlive() const;
            virtual ~Character(){};

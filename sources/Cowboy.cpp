@@ -21,7 +21,7 @@ void Cowboy ::shoot(Character* enemy){
     }
 }
 
-string Cowboy :: print(){
+void Cowboy :: print(){
     string str;
     string tmp;
     ostringstream local;            
@@ -37,13 +37,15 @@ string Cowboy :: print(){
     else {
         string str = "C Fighter name was (" + name_ + ") . Last seen in " + local.str();
     }
-    return str;
+    cout << str;
 }
 
 int Cowboy :: getNumOfBullets(){
     return Bullets_;
 }
 
-void Cowboy :: attack(){
-
+void Cowboy :: attack(Character* enemy){
+    if (Bullets_>0)
+        shoot(enemy);
+    else reload();
 }

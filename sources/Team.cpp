@@ -6,6 +6,12 @@ Team :: Team(Character* leader){
 }
 
 void Team :: add(Character* mate){
+    if (warriors.size()==10)
+        return;
+    for (auto &warrior : warriors)
+        if (warrior->getName() == mate->getName() && warrior->getLocation() == mate->getLocation())
+            return;
+
     unsigned int position = 0;
     unsigned int iter = 0;
     while (typeid(warriors.at(iter))==typeid(Cowboy)){
@@ -18,17 +24,24 @@ void Team :: add(Character* mate){
         warriors.push_back(mate);
 }
 
-void Team :: attack(Team* enemies){
+void Team :: attack(Team* enemies) {
+    if (stillAlive()==0 || enemies->stillAlive() ==0)
+        return;
     if (leader->isAlive() == false){
         Setleader();
     }
     Character* target = findT(enemies);
-    for (auto &warrior : warriors){
-        if (warrior->isAlive())
-            
+    while (stillAlive()>0 && enemies->stillAlive()>0)
+        for (auto &warrior : warriors){
+            if (leader->isAlive() == false)
+                Setleader();
+            if (target->isAlive()==false)
+                target = findT(enemies);
+            if (target->isAlive()==false)
+                return;
+            if (warrior->isAlive())
+                warrior->attack(target);
     }
-
-
 }
 
 void Team :: Setleader(){
@@ -45,11 +58,16 @@ void Team :: Setleader(){
 }
 
 int Team :: stillAlive(){
-    return 0;
+    int res =0;
+    for (auto &warrior : warriors)
+        if (warrior->isAlive())
+            res++;
+    return res;
 }
 
 void Team :: print() const{
-    return;
+    for (auto &warrior : warriors)
+        warrior->print();
 }
 
 Character* Team :: findT(Team* enemies){

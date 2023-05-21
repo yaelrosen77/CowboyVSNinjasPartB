@@ -6,6 +6,12 @@ Point :: Point(double x1, double y1){
     y_ = y1;
 }
 
+bool Point :: operator==(const Point& other) const{
+    if (x_ == other.getX() && y_ == other.getY())
+        return true;
+    return false;
+}
+
 double Point :: distance(const Point& other) const{
     double res = (pow((other.getX()-x_),2)+pow((other.getY()-y_),2));
     return sqrt(res);

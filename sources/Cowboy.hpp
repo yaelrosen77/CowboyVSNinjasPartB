@@ -11,7 +11,8 @@ namespace ariel{
 
         public:
             int getNumOfBullets();
-            string print() override;
+            void print() override;
+            void attack(Character* enemy) override;
             Cowboy(string name, Point location);
             void shoot(Character* enemy);
             bool hasboolets();

@@ -13,13 +13,14 @@ using namespace std;
 
 namespace ariel{
     class Team{
+        protected:
         vector <Character*> warriors;
         Character* leader;
 
         public:
             Team(Character* leader);
             virtual void add(Character* mate);
-            void attack(Team* enemies);
+            virtual void attack(Team* enemies);
             int stillAlive();
             void print() const;
             void Setleader();

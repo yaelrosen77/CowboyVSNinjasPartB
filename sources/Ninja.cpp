@@ -13,7 +13,7 @@ void Ninja:: slash(Character* enemy){
     }
 }
 
-string Ninja::print(){
+void Ninja::print(){
     string str;
     string tmp;
     ostringstream local;            
@@ -29,8 +29,14 @@ string Ninja::print(){
     else {
         string str = "N Fighter name was (" + name_ + ") . Last seen in " + local.str();
     }
-    return str;    
+    cout << str;    
 }
 
 Ninja :: Ninja(string name, Point location):
     Character(name, location){}
+
+void Ninja ::attack(Character* enemy){
+    if (distance(enemy)<1)
+        slash(enemy);
+    else move(enemy);
+} 

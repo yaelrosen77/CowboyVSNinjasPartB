@@ -14,6 +14,7 @@ namespace ariel{
             void print() const;
             double getX() const;
             double getY() const;
+            bool operator==(const Point& other) const;
             static bool inDomain(Point& subj, Point& edge1, Point& edge2);
             static Point moveTowards(Point& source, Point& dest, double dist);
 };
