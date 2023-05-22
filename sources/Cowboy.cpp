@@ -3,7 +3,7 @@ using namespace ariel;
 
 Cowboy :: Cowboy(string name, Point location):Character(name, location){
     Bullets_ = 6;
-    hitPoints_ = 110;
+    sethp(110);
 }
 
 bool Cowboy :: Cowboy :: hasboolets(){
@@ -30,17 +30,13 @@ void Cowboy ::shoot(Character* enemy){
 string Cowboy :: print(){
     string str;
     if (this->isAlive()){
-        str = "C Fighter name is " + name_ + ". Num of hitpoints are " + 
-                    to_string(hitPoints_) + ". Located in " + location_.print();
+        str = "C Fighter name is " + getName() + ". Num of hitpoints are " + 
+                    to_string(Gethp()) + ". Located in " + getLocation().print();
     }
     else {
-        str = "C Fighter name was (" + name_ + ") . Last seen in " + location_.print();
+        str = "C Fighter name was (" + getName() + ") . Last seen in " + getLocation().print();
     }
     return str;
-}
-
-int Cowboy :: getNumOfBullets(){
-    return Bullets_;
 }
 
 void Cowboy :: attack(Character* enemy){

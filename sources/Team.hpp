@@ -13,12 +13,17 @@ using namespace std;
 
 namespace ariel{
     class Team{
-        protected:
+        private:
         vector <Character*> warriors;
         Character* leader;
 
         public:
             Team(Character* leader);
+            vector <Character*> * GetWarriors(){return &warriors;}
+            Team(const Team& other) = delete;
+            Team& operator=(const Team& other);
+            Team(Team&& other) = delete;
+            Team& operator=(Team&& other) = delete;
             virtual void add(Character* mate);
             virtual void attack(Team* enemies);
             int stillAlive();

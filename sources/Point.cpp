@@ -1,19 +1,7 @@
 #include "Point.hpp"
 using namespace ariel;
 
-Point :: Point(double x1, double y1){
-    x_ = x1;
-    y_ = y1;
-}
-Point::Point(Point& other){
-    x_=other.getX();
-    y_=other.getY();
-}
-bool Point :: operator==(const Point& other) const{
-    if (x_ == other.getX() && y_ == other.getY())
-        return true;
-    return false;
-}
+Point :: Point(double xl1, double yl1): x_(xl1), y_(yl1){}
 
 double Point :: distance(const Point& other) const{
     double res = (pow((other.getX()-x_),2)+pow((other.getY()-y_),2));
@@ -25,7 +13,7 @@ string Point :: print() const{
     return str;
 }
 
-Point Point :: moveTowards(Point& source, Point& dest, double dist){
+Point Point :: moveTowards(const Point& source, const Point& dest, double dist){
     if (dist<=0)
         throw invalid_argument("cannot move with negative distance");
     double dist2 = source.distance(dest);
@@ -51,7 +39,7 @@ Point Point :: moveTowards(Point& source, Point& dest, double dist){
     return res2;
 }
 
-bool Point :: inDomain(Point& subj, Point& edge1, Point& edge2){
+bool Point :: inDomain(const Point& subj, const Point& edge1, const Point& edge2){
     double minX = min(edge1.getX(),edge2.getX());
     double maxX = max(edge1.getX(),edge2.getX());
     double minY = min(edge1.getY(),edge2.getY());

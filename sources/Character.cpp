@@ -2,7 +2,7 @@
 using namespace ariel;
 
 Character :: Character(string name, Point location):
-    location_(location),name_(name){inTeam= false;}
+    location_(location),name_(name){inteam = false;}
 
 void Character :: hit(int hits){
     if (hits<0)

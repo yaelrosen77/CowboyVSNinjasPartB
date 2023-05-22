@@ -2,10 +2,10 @@
 using namespace ariel; 
 
 Team :: Team(Character* leader){
-    if (leader->inTeam)
+    if (leader->inTeam())
         throw runtime_error("leader is on rival team");
     this->leader = leader;
-    leader->inTeam = true;
+    leader->Setin(true);
     warriors.insert(warriors.begin(),leader);
 }
 
@@ -15,7 +15,7 @@ void Team :: add(Character* mate){
     for (Character* &warrior : warriors){
         if (mate == warrior)
             throw runtime_error("is already on this team");}
-    if (mate->inTeam == true)
+    if (mate->inTeam() == true)
         throw runtime_error("is in rival team");
 
     unsigned int position = 0;
@@ -26,10 +26,10 @@ void Team :: add(Character* mate){
     position = iter;
     if (typeid(mate) == typeid(Cowboy)){
         warriors.insert(warriors.begin() + position, mate);
-        mate->inTeam = true;}
+        mate->Setin(true);}
     else  { 
         warriors.push_back(mate);
-        mate->inTeam = true;}
+        mate->Setin(true);}
 }
 
 void Team :: attack(Team* enemies) {

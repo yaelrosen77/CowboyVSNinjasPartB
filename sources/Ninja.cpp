@@ -3,8 +3,8 @@ using namespace ariel;
 
 void Ninja:: move(Character* enemy){
     Point enemyloc = enemy->getLocation(); 
-    Point tmp = Point :: moveTowards(location_,enemyloc,speed);
-    location_ = tmp;
+    Point tmp = Point :: moveTowards(getLocation(),enemyloc,speed);
+    SetLocation(tmp);
 }
 
 void Ninja:: slash(Character* enemy){
@@ -20,10 +20,10 @@ void Ninja:: slash(Character* enemy){
 string Ninja::print(){
     string str;
     if (this->isAlive()){
-        str = "N Fighter name is " + name_ + ". Num of hitpoints are " + 
-                    to_string(hitPoints_) + ". Located in " + location_.print();
+        str = "N Fighter name is " + getName() + ". Num of hitpoints are " + 
+                    to_string(Gethp()) + ". Located in " + getLocation().print();
     }
-    else str = "N Fighter name was (" + name_ + ") . Last seen in " + location_.print();
+    else str = "N Fighter name was (" + getName() + ") . Last seen in " + getLocation().print();
     return str;    
 }
 
