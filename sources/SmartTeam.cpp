@@ -5,6 +5,9 @@ using namespace std;
 using namespace ariel;
 
 Point po0(0,0);
+/*This method finds the convex hull of enemy team, and than moves all the ninja warriors 
+to its bounds. the cowboys stay foot and shoot each one that is close to them.
+to */
 void SmartTeam :: attack(Team* enemies){
     if (enemies == nullptr)
         throw invalid_argument("null ptr");
