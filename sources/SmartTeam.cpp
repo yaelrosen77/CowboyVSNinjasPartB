@@ -27,28 +27,19 @@ void SmartTeam :: attack(Team* enemies){
     for (Point enemy : convexed){
          for (size_t i =0 ; i < selfteam.size(); i++){
             Character* warrior = selfteam[selfteam.size()-i-1];
-            if (warrior->isAlive() && warrior->inPos()==false){
+            if (warrior->isAlive() && warrior->inPos()==false && warrior->getLocation().distance(enemy)<1){
                if (typeid(warrior)==typeid(YoungNinja)){
                   Point tmp = Point :: moveTowards(warrior->getLocation(),enemy,14);  
-                  if (tmp.distance(enemy)>2){
-                     tmp = Point :: moveTowards(tmp,enemy,14);
-                  }
                   warrior->SetLocation(tmp);
                   warrior->setPos(true);             
                }
                if (typeid(warrior)==typeid(TrainedNinja)){
                   Point tmp = Point :: moveTowards(warrior->getLocation(),enemy,12);
-                  if (tmp.distance(enemy)>2){
-                     tmp = Point :: moveTowards(tmp,enemy,12);
-                  }
                   warrior->SetLocation(tmp);
                   warrior->setPos(true);
                }
                if (typeid(warrior)==typeid(OldNinja)){
                   Point tmp = Point :: moveTowards(warrior->getLocation(),enemy,10);
-                  if (tmp.distance(enemy)>2){
-                     tmp = Point :: moveTowards(tmp, enemy,10);
-                  }
                   warrior->SetLocation(tmp);
                   warrior->setPos(true);
                }
@@ -62,7 +53,7 @@ void SmartTeam :: attack(Team* enemies){
    if (target == nullptr)
       return;
    for (Character* warrior : selfteam){
-      if (warrior->isAlive())
+      if (warrior->isAlive()&&warrior->inPos()==false)
             warrior->attack(target);
         if (target->isAlive()==false){
             target = findT(enemies);
@@ -110,18 +101,16 @@ vector<Point> ariel :: findConvexHull(vector<Point>& points, int n) {
    size_t min = 0;
    for(size_t i = 1; i<n; i++) {
       double yval = points[i].getY();
-      //find bottom most or left most point
       if((yval < minY) || (minY == yval) && points[i].getX() < points[min].getX()) {
          minY = points[i].getY();
          min = i;
       }
    }
-   swap(points[0], points[min]);    //swap min point to 0th location
+   swap(points[0], points[min]);    
    po0 = points[0];
-   qsort(&points[1], (size_t)(n-1), sizeof(Point), comp);    //sort points from 1 place to end
-   size_t arrSize = 1;    //used to locate items in modified array
+   qsort(&points[1], (size_t)(n-1), sizeof(Point), comp);    
+   size_t arrSize = 1;    
    for(size_t i = 1; i<n; i++) {
-      //when the angle of ith and (i+1)th elements are same, remove points
       while(i < n-1 && direction(po0, points[i], points[i+1]) == 0)
          i++;
          points[arrSize] = points[i];
