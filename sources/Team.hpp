@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TEAM_
+#define TEAM_
 #include <iostream>
 #include <float.h>
 #include <vector>
@@ -10,6 +11,7 @@ using namespace std;
 #include "OldNinja.hpp"
 #include "TrainedNinja.hpp"
 #include "Cowboy.hpp"
+using namespace ariel;
 
 namespace ariel{
     class Team{
@@ -19,17 +21,21 @@ namespace ariel{
 
         public:
             Team(Character* leader);
+            virtual void add(Character* mate);
             vector <Character*> * GetWarriors(){return &warriors;}
             Team(const Team& other) = delete;
             Team& operator=(const Team& other);
             Team(Team&& other) = delete;
             Team& operator=(Team&& other) = delete;
-            virtual void add(Character* mate);
             virtual void attack(Team* enemies);
             int stillAlive();
             void print() const;
             void Setleader();
             Character* findT(Team* enemies);
             virtual ~Team();
+            Character* getleader(){return leader;}
+
     };
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COWBOY_
+#define COWBOY_
 #include <iostream>
 #include <sstream>
 using namespace std; 
@@ -19,3 +20,5 @@ namespace ariel{
     };
 
 }
+
+#endif

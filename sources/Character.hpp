@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHARACTER_
+#define CHARACTER_
 #include <iostream>
 using namespace std;
 #include "Point.hpp"
@@ -11,6 +12,7 @@ namespace ariel{
             int hitPoints_;
             string name_;
             bool inteam;
+            bool inposition;
 
         public:
            Character(string name, Point location);
@@ -26,6 +28,8 @@ namespace ariel{
            void Setin(bool val){inteam = val;}
            virtual void attack(Character* other) = 0;
            bool isAlive() const;
+           bool inPos() const {return inposition;}
+           void setPos(bool prg){inposition = prg;}
            void hit(int hits);
            double distance(const Character* other) const;
            void SetLocation(Point& dest){location_=dest;}
@@ -35,3 +39,5 @@ namespace ariel{
     };
 
 }
+
+#endif

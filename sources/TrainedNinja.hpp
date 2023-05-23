@@ -1,4 +1,5 @@
-#pragma once 
+#ifndef TRAINEDNINJA_
+#define TRAINEDNINJA_
 #include <iostream>
 using namespace std; 
 #include "Ninja.hpp"
@@ -9,3 +10,5 @@ namespace ariel{
             TrainedNinja(string name, Point location);
     };
 }
+
+#endif

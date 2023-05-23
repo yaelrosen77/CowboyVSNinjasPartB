@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TEAM2_
+#define TEAM2_
 #include <iostream>
 using namespace std;
 #include "Team.hpp"
@@ -11,3 +12,5 @@ namespace ariel{
         void add(Character* mate) override;
     };
 }
+
+#endif

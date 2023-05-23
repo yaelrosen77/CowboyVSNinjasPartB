@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NINJA_
+#define NINJA_
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -16,3 +17,5 @@ namespace ariel{
             int speed;
     };
 }
+
+#endif
