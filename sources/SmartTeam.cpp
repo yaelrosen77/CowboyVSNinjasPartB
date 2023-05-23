@@ -8,7 +8,7 @@ Point po0(0,0);
 void SmartTeam :: attack(Team* enemies){
     if (enemies == nullptr)
         throw invalid_argument("null ptr");
-    if (enemies->stillAlive() ==0 || stillAlive()==0)
+    if ((enemies->stillAlive() ==0) || (stillAlive()==0))
         throw runtime_error("dead enemy team");
     if (getleader()->isAlive() == false){
         Setleader();
